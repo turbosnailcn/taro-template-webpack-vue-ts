@@ -29,7 +29,8 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   alias: {
-    "@": resolve(__dirname, "src/")
+    "@": resolve(__dirname, "..", "./src/"),
+    "@images": resolve(__dirname, "..", "./src/assets/images/")
   },
   plugins: [
     // Taro TailwindCSS引入插件
@@ -57,7 +58,7 @@ const config = {
       "taro-plugin-pinia", {
         // 具体参数配置项，参考：https://github.com/keyding/taro-plugin-pinia
       }
-    ]
+    ],
   ],
   // 配置NutUI全局 Scss 变量
   sass: {
@@ -74,6 +75,7 @@ const config = {
   framework: 'vue3',
   compiler: {
     type: 'webpack5',
+    prebundle: false,
   },
   cache: {
     enable: true // Webpack 持久化缓存配置，建议开启。参考：https://docs.taro.zone/docs/config-detail#cache
