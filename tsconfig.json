@@ -22,7 +22,6 @@
     "paths": {
       "@/*": ["./src/*"],
     },
-    "suppressImplicitAnyIndexErrors": true
   },
   "include": ["./src", "./types", "components.d.ts", "auto-imports.d.ts"],
   "exclude": ["node_modules", "dist", "**/*.js"],

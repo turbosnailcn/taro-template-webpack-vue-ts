@@ -1,4 +1,5 @@
-import ComponentsPlugin from 'unplugin-vue-components/webpack'
+import ComponentsPlugin from 'unplugin-vue-components/webpack';
+import TerserPlugin from "terser-webpack-plugin";
 import { resolve } from 'path';
 
 // 配置NutUI适配器，用于NutUI的自动按需引入
@@ -15,9 +16,10 @@ const NutUIResolver = () => {
   }
 }
 
+
 // Taro的Webpack配置项，参考：https://taro-docs.jd.com/docs/config-detail
 const config = {
-  projectName: 'taro-template',
+  projectName: 'new-hncst-mini-repair',
   date: '2023-3-23',
   designWidth: 375,
   deviceRatio: {
@@ -83,10 +85,22 @@ const config = {
   mini: {
     //Taro webpackChain配置，参考：https://taro-docs.jd.com/docs/config-detail#miniwebpackchain
     webpackChain(chain, webpack) {
-      
-      //配置unplugin-auto-import插件，用于自动引入vue的api，参考：https://github.com/antfu/unplugin-auto-import
+
       chain.merge({
         plugin: {
+          //配置terser插件，用于分包压缩，避免小程序主包体积过大，超过2m的限制，参考：https://github.com/webpack-contrib/terser-webpack-plugin
+          terserPlugin: {
+            plugin: TerserPlugin,
+            args: [
+              {
+                test: /\.js(\?.*)?$/i,
+                terserOptions: {
+                  compress: true,
+                }
+              }
+            ]
+          },
+          //配置unplugin-auto-import插件，用于自动引入vue的api，参考：https://github.com/antfu/unplugin-auto-import
           unpluginAutoImport: {
             plugin: require("unplugin-auto-import/webpack")({
               imports: [
@@ -104,6 +118,8 @@ const config = {
               vueTemplate: true,
             }),
           },
+
+
         },
       });
 
@@ -113,6 +129,7 @@ const config = {
           resolvers: [NutUIResolver()],
         })
       );
+
     },
     postcss: {
       pxtransform: {

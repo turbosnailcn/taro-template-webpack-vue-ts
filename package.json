@@ -36,7 +36,7 @@
   "author": "",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
-    "@icon-park/svg": "^1.4.2",
+    "@iconpark-mini-app/taro-vue": "^1.0.1",
     "@nutui/nutui-taro": "^4.0.3",
     "@tarojs/components": "3.6.2",
     "@tarojs/helper": "3.6.2",
@@ -90,7 +90,6 @@
     "prettier-plugin-tailwindcss": "^0.1.10",
     "style-loader": "1.3.0",
     "stylelint": "^14.4.0",
-    "svg64": "^2.0.0",
     "taro-plugin-compiler-optimization": "^1.0.4",
     "taro-plugin-tailwind": "^1.3.1",
     "terser-webpack-plugin": "^5.3.7",
