@@ -1,4 +1,5 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
+import { router } from "@/router";
 import { createPinia } from "pinia";
 import './app.css'
 
@@ -10,5 +11,6 @@ const App = createApp({
 const pinia = createPinia();
 
 App.use(pinia);
+App.use(router);
 
 export default App

@@ -23,7 +23,17 @@
       "@/*": ["./src/*"],
     },
   },
-  "include": ["./src", "./types", "components.d.ts", "auto-imports.d.ts"],
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts",
+    "src/*.vue",
+    "src/**/*.vue",
+    "src/*.tsx",
+    "src/**/*.tsx",
+    "types/*.ts",
+    "components.d.ts",
+    "auto-imports.d.ts"
+  ],
   "exclude": ["node_modules", "dist", "**/*.js"],
   "compileOnSave": false
 }
