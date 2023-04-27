@@ -66,7 +66,6 @@
     "@babel/core": "^7.8.0",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
-    "@dcasia/mini-program-tailwind-webpack-plugin": "^1.5.6",
     "@tarojs/cli": "3.6.2",
     "@tarojs/webpack5-runner": "3.6.2",
     "@types/node": "^16.11.26",
@@ -99,6 +98,7 @@
     "unplugin-auto-import": "^0.15.2",
     "unplugin-vue-components": "0.23.0",
     "vue-loader": "^17.0.0",
+    "weapp-tailwindcss-webpack-plugin": "^2.1.2",
     "webpack": "5.69.0"
   }
 }

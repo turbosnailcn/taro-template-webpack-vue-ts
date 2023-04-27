@@ -2,6 +2,9 @@ import ComponentsPlugin from 'unplugin-vue-components/webpack';
 import TerserPlugin from "terser-webpack-plugin";
 import { resolve } from 'path';
 
+// TailwindCSS的语法修复插件
+const { UnifiedWebpackPluginV5 } = require('weapp-tailwindcss-webpack-plugin')
+
 // 配置NutUI适配器，用于NutUI的自动按需引入
 const NutUIResolver = () => {
   return (name) => {
@@ -31,8 +34,8 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   alias: {
-    "@": resolve(__dirname, "..", "./src/"),
-    "@images": resolve(__dirname, "..", "./src/assets/images/")
+    "@": resolve(__dirname, "..", "./src"),
+    "@images": resolve(__dirname, "..", "./src/assets/images")
   },
   plugins: [
     // Taro TailwindCSS引入插件
@@ -41,12 +44,6 @@ const config = {
         // 具体参数为 tailwind postcss 配置项，参考：https://github.com/tailwindlabs/tailwindcss/blob/master/types/config.d.ts#L352
         tailwindcss: {},
         autoprefixer: {},
-      }
-    ],
-    // Taro TailwindCSS语法修复插件
-    [
-      "@dcasia/mini-program-tailwind-webpack-plugin/dist/taro", {
-        // 具体参数配置项，参考：https://github.com/dcasia/mini-program-tailwind
       }
     ],
     // Taro HTML插件，用于适配NutUI
@@ -118,7 +115,14 @@ const config = {
               vueTemplate: true,
             }),
           },
-
+          //配置TailwindCSS的语法修复插件，用于修复小程序在使用TailwindCSS时候的语法
+          //参考：https://github.com/sonofmagic/weapp-tailwindcss-webpack-plugin
+          UnifiedWebpackPluginV5: {
+            plugin: UnifiedWebpackPluginV5,
+            args: [{
+              appType: 'taro'
+            }]
+          }
 
         },
       });
